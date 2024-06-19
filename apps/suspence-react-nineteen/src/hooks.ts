@@ -1,33 +1,49 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { useStore } from 'zustand';
+import { useContext } from 'react';
 
-import { useRouteContext } from '@tanstack/react-router';
 import { pokemonAndWaitQueryOptions } from './pokemonQueryOptions';
+import { TrackFetchStoreContext } from './store';
 
 // export to components
 export const usePokemonSuspenseQuery = (
   pokemonName: 'bulbasaur' | 'squirtle' | 'charmander',
 ) => {
-  const context = useRouteContext({ from: "__root__" });
-  const actions = useStore(context.trackFetchStore, (s) => s.actions);
-
-  return useSuspenseQuery(pokemonAndWaitQueryOptions(actions, pokemonName));
+  return useSuspenseQuery(pokemonAndWaitQueryOptions(pokemonName));
 };
 
 export const useBulbasaurFetchStatus = () => {
-  const context = useRouteContext({ from: "__root__" });
+  const store = useContext(TrackFetchStoreContext);
 
-  return useStore(context.trackFetchStore, (s) => s.fetchStatus.bulbasaur);
+  if (!store) {
+    throw new Error(
+      'usePokemonSuspenseQuery must be used within a <TrackFetchStore.Provider>',
+    );
+  }
+
+  return useStore(store, (state) => state.fetchStatus.bulbasaur);
 };
 
 export const useSquirtleFetchStatus = () => {
-  const context = useRouteContext({ from: "__root__" });
+  const store = useContext(TrackFetchStoreContext);
 
-  return useStore(context.trackFetchStore, (s) => s.fetchStatus.squirtle);
+  if (!store) {
+    throw new Error(
+      'usePokemonSuspenseQuery must be used within a <TrackFetchStore.Provider>',
+    );
+  }
+
+  return useStore(store, (state) => state.fetchStatus.squirtle);
 };
 
 export const useCharmanderFetchStatus = () => {
-  const context = useRouteContext({ from: "__root__" });
+  const store = useContext(TrackFetchStoreContext);
 
-  return useStore(context.trackFetchStore, (s) => s.fetchStatus.charmander);
+  if (!store) {
+    throw new Error(
+      'usePokemonSuspenseQuery must be used within a <TrackFetchStore.Provider>',
+    );
+  }
+
+  return useStore(store, (state) => state.fetchStatus.charmander);
 };

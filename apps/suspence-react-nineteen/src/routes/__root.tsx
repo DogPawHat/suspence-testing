@@ -7,17 +7,12 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { PokemonFetchStatus } from '../components/pokemon-fetch-status';
 import type { QueryClient } from '@tanstack/react-query';
-import type { StoreApi } from 'zustand';
-import type { TrackFetchStore } from '../store';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
-  trackFetchStore: StoreApi<TrackFetchStore>;
 }>()({
   beforeLoad: async ({ context }) => {
-    const actions = context.trackFetchStore.getState().actions;
     context.queryClient.clear();
-    actions.clearTrackFetch();
   },
   component: RootComponent,
 });
