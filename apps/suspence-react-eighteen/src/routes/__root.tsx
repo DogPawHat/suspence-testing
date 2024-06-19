@@ -11,6 +11,9 @@ import type { QueryClient } from '@tanstack/react-query';
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
 }>()({
+  beforeLoad: async ({ context }) => {
+    context.queryClient.clear();
+  },
   component: RootComponent,
 });
 
