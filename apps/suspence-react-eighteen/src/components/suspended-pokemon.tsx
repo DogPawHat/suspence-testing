@@ -1,8 +1,9 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { pokemonAndWaitQueryOptions } from '../pokemonQueryOptions';
+import { usePokemonSuspenseQuery } from '../context';
 
 export const SuspendedPokemon = ({ pokemonId }: { pokemonId: string }) => {
-  const { data } = useSuspenseQuery(pokemonAndWaitQueryOptions(pokemonId));
+  const { data } = usePokemonSuspenseQuery(pokemonId);
 
   return (
     <div className="bg-gray-100 p-4 rounded-lg">

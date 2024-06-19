@@ -1,15 +1,16 @@
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { routeTree } from './routeTree.gen';
+import { QueryClientProvider } from '@tanstack/react-query';
 
-const queryClient = new QueryClient();
+import { routeTree } from './routeTree.gen';
+import { queryClient, trackFetchStore } from './context';
 
 // Set up a Router instance
 const router = createRouter({
   routeTree,
   context: {
     queryClient,
+    trackFetchStore,
   },
   defaultPreload: false,
   // Since we're using React Query, we don't want loader calls to ever be stale
@@ -34,3 +35,4 @@ if (!rootElement.innerHTML) {
     </QueryClientProvider>,
   );
 }
+

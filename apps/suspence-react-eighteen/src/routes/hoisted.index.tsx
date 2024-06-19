@@ -5,9 +5,11 @@ import { PokemonList } from '../components/pokemon-list';
 
 export const Route = createFileRoute('/hoisted/')({
   loader: ({ context }) => {
-    context.queryClient.prefetchQuery(pokemonAndWaitQueryOptions('bulbasaur'));
-    context.queryClient.prefetchQuery(pokemonAndWaitQueryOptions('squirtle'));
-    context.queryClient.prefetchQuery(pokemonAndWaitQueryOptions('charmander'));
+    const actions = context.trackFetchStore.getState().actions;
+
+    context.queryClient.prefetchQuery(pokemonAndWaitQueryOptions(actions, 'bulbasaur'));
+    context.queryClient.prefetchQuery(pokemonAndWaitQueryOptions(actions, 'squirtle'));
+    context.queryClient.prefetchQuery(pokemonAndWaitQueryOptions(actions, 'charmander'));
   },
   component: HoistedIndexComponent,
 });
