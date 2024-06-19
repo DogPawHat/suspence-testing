@@ -10,11 +10,7 @@
   "scripts": {
     "clean": "pnpm --filter \"./packages/**\" run clean",
     "preinstall": "node -e \"if(process.env.CI == 'true') {console.log('Skipping preinstall...'); process.exit(1)}\" || npx -y only-allow pnpm",
-    "build": "nx affected --target=build --exclude=examples/**",
-    "build:all": "nx run-many --target=build --exclude=examples/**",
-    "build:examples": "nx run-many --target=build",
-    "watch": "pnpm run build:all && nx watch --all -- pnpm run build:all",
-    "dev": "pnpm run watch",
+    "build": "nx run-many -t build",
     "prettier": "prettier --ignore-unknown '**/*'",
     "prettier:write": "pnpm run prettier --write"
   },
@@ -32,7 +28,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "glob": "^10.3.14",
-    "nx": "17.2.8",
+    "nx": "19.3.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",
     "vitest": "^1.6.0"
