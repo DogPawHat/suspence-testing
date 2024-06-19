@@ -13,8 +13,8 @@
     "build": "nx run-many -t build",
     "prettier": "prettier --ignore-unknown '**/*'",
     "prettier:write": "pnpm run prettier --write",
-    "dev:18": "pnpm run dev --filter suspence-react-eighteen",
-    "dev:19": "pnpm run dev --filter suspence-react-eighteen"
+    "dev:18": "pnpm --filter suspence-react-eighteen run dev",
+    "dev:19": "pnpm --filter suspence-react-nineteen run dev"
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^5.0.5",
