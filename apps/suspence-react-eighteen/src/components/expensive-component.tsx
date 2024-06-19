@@ -1,7 +1,7 @@
 const ExpensiveComponent = () => {
   const generateLargeDataset = () => {
     const result = [];
-    for (let i = 0; i < 1750; i++) {
+    for (let i = 0; i < 2250; i++) {
       const row = [];
       for (let j = 0; j < 100; j++) {
         row.push(Math.random());
