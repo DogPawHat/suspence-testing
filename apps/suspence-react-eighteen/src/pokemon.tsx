@@ -1,9 +1,10 @@
 // using this just for the type, I don't trust the sdk for this experiment
-import type { Pokemon } from "pokeapi-js-wrapper";
+import type { Pokemon } from 'pokeapi-js-wrapper';
 
 const POKEAPI_BASE_URL = 'https://pokeapi.co/api/v2/';
 
-const pokemonEndpointUrl = (pokemonName: string) => new URL(`pokemon/${pokemonName}`, POKEAPI_BASE_URL).href;
+const pokemonEndpointUrl = (pokemonName: string) =>
+  new URL(`pokemon/${pokemonName}`, POKEAPI_BASE_URL).href;
 
 // Query function
 // Get pokemon by name and wait 1.5 seconds after the request

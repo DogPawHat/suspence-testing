@@ -3,7 +3,6 @@ import { createFileRoute } from '@tanstack/react-router';
 import { pokemonAndWaitQueryOptions } from '../pokemonQueryOptions';
 import { PokemonList } from '../components/pokemon-list';
 
-// @ts-ignore
 export const Route = createFileRoute('/hoisted/')({
   loader: ({ context }) => {
     context.queryClient.prefetchQuery(pokemonAndWaitQueryOptions('bulbasaur'));

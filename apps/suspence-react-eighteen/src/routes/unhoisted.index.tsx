@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { Suspense } from 'react';
-import { SuspendedPokemon } from '../components/suspended-pokemon';
+
 import { PokemonList } from '../components/pokemon-list';
 
 export const Route = createFileRoute('/unhoisted/')({
