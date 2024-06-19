@@ -46,6 +46,14 @@ function RootComponent() {
         >
           Hoisted Fetches
         </Link>
+        <Link
+          to="/expensive"
+          activeProps={{
+            className: 'font-bold',
+          }}
+        >
+          Expensive Fetches
+        </Link>
       </div>
       <hr />
       <PokemonFetchStatus />

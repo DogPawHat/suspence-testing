@@ -15,6 +15,7 @@ type FetchStatusDirectory = {
   bulbasaur: FetchStatus;
   squirtle: FetchStatus;
   charmander: FetchStatus;
+  pikachu: FetchStatus;
 };
 
 type PokemonToFetch = keyof FetchStatusDirectory;
@@ -44,6 +45,10 @@ const initalState = {
       endDateTime: null,
     },
     charmander: {
+      startDateTime: null,
+      endDateTime: null,
+    },
+    pikachu: {
       startDateTime: null,
       endDateTime: null,
     },

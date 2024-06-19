@@ -11,17 +11,12 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as LayoutImport } from './routes/_layout'
 import { Route as IndexImport } from './routes/index'
 import { Route as UnhoistedIndexImport } from './routes/unhoisted.index'
 import { Route as HoistedIndexImport } from './routes/hoisted.index'
+import { Route as ExpensiveIndexImport } from './routes/expensive.index'
 
 // Create/Update Routes
-
-const LayoutRoute = LayoutImport.update({
-  id: '/_layout',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
@@ -38,6 +33,11 @@ const HoistedIndexRoute = HoistedIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const ExpensiveIndexRoute = ExpensiveIndexImport.update({
+  path: '/expensive/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -49,11 +49,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/_layout': {
-      id: '/_layout'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof LayoutImport
+    '/expensive/': {
+      id: '/expensive/'
+      path: '/expensive'
+      fullPath: '/expensive'
+      preLoaderRoute: typeof ExpensiveIndexImport
       parentRoute: typeof rootRoute
     }
     '/hoisted/': {
@@ -77,6 +77,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
+  ExpensiveIndexRoute,
   HoistedIndexRoute,
   UnhoistedIndexRoute,
 })
@@ -90,7 +91,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/_layout",
+        "/expensive/",
         "/hoisted/",
         "/unhoisted/"
       ]
@@ -98,8 +99,8 @@ export const routeTree = rootRoute.addChildren({
     "/": {
       "filePath": "index.tsx"
     },
-    "/_layout": {
-      "filePath": "_layout.tsx"
+    "/expensive/": {
+      "filePath": "expensive.index.tsx"
     },
     "/hoisted/": {
       "filePath": "hoisted.index.tsx"

@@ -1,4 +1,7 @@
-import { useBulbasaurFetchStatus, useCharmanderFetchStatus, useSquirtleFetchStatus } from '../hooks';
+import { useRouter } from '@tanstack/react-router';
+import { useBulbasaurFetchStatus, useCharmanderFetchStatus, usePikachuFetchStatus, useSquirtleFetchStatus } from '../hooks';
+import { Route as ExpensiveIndexRoute } from '../routes/expensive.index';
+
 
 const BulbasaurStatus = () => {
   const fetchStatus = useBulbasaurFetchStatus();
@@ -37,7 +40,24 @@ const CharmanderStatus = () => {
 };
 
 
+const PikachuStatus = () => {
+  const fetchStatus = usePikachuFetchStatus();
+
+  return (
+    <tr>
+      <td>Pikachu</td>
+      <td>{fetchStatus.startDateTime ?? '---'}</td>
+      <td>{fetchStatus.endDateTime ?? '---'}</td>
+    </tr>
+  );
+};
+
+
 export const PokemonFetchStatus = () => {
+  const router = useRouter();
+
+  const isExpensive = router.latestLocation.pathname.includes('/expensive');
+
   return (
     <table className="w-full">
       <thead>
@@ -48,9 +68,12 @@ export const PokemonFetchStatus = () => {
         </tr>
       </thead>
       <tbody>
-        <BulbasaurStatus />
-        <SquirtleStatus />
-        <CharmanderStatus />
+        {!isExpensive && <>
+          <BulbasaurStatus />
+          <SquirtleStatus />
+          <CharmanderStatus />
+        </>}
+        {isExpensive && <PikachuStatus />}
       </tbody>
     </table>
   );

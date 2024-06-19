@@ -19,6 +19,11 @@ export const getPokemonAndWait = async (pokemonName: string) => {
 
   const data = await res.json();
 
+  let waitTime = 1500;
+  if (pokemonName === 'pikachu') {
+    waitTime = 3000;
+  }
+
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
   return data as Pokemon;

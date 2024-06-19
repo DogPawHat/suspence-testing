@@ -1,8 +1,6 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { pokemonAndWaitQueryOptions } from '../pokemonQueryOptions';
 import { usePokemonSuspenseQuery } from '../hooks';
 
-export const SuspendedPokemon = ({ pokemonId }: { pokemonId: 'bulbasaur' | 'squirtle' | 'charmander' }) => {
+export const SuspendedPokemon = ({ pokemonId }: { pokemonId: 'bulbasaur' | 'squirtle' | 'charmander' | 'pikachu' }) => {
   const { data } = usePokemonSuspenseQuery(pokemonId);
 
   return (

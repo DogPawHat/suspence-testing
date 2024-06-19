@@ -1,11 +1,9 @@
 import { queryOptions } from '@tanstack/react-query';
-import { formatRFC3339 } from 'date-fns';
 
 import { getPokemonAndWait } from './pokemon';
-import type { TrackFetchStoreActions } from './store';
 
 export const pokemonAndWaitQueryOptions = (
-  pokemonName: 'bulbasaur' | 'squirtle' | 'charmander',
+  pokemonName: 'bulbasaur' | 'squirtle' | 'charmander' | 'pikachu',
 ) =>
   queryOptions({
     queryKey: ['pokemon', { pokemonName }],

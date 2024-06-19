@@ -47,3 +47,15 @@ export const useCharmanderFetchStatus = () => {
 
   return useStore(store, (state) => state.fetchStatus.charmander);
 };
+
+export const usePikachuFetchStatus = () => {
+  const store = useContext(TrackFetchStoreContext);
+
+  if (!store) {
+    throw new Error(
+      'usePokemonSuspenseQuery must be used within a <TrackFetchStore.Provider>',
+    );
+  }
+
+  return useStore(store, (state) => state.fetchStatus.pikachu);
+};
