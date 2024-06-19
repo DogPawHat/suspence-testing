@@ -1,12 +1,6 @@
-# TODO
+# React Suspense 18 vs 19 Comparison
 
-out of order list don't at me
+Run `pnpm install` first.
 
-[ ] - CI
-[ ] - deploy to vercel
-[ ] - react 19
-[ ] - update packages
-[ ] - pokemon api
-[ ] - react query devtools in production
-[ ] - zustand powered promise visualizer
-[ ] - proper ass readme
+For React 18 run `pnpm dev:18`
+For React 19 run `pnpm dev:19`.
