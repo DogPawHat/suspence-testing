@@ -5,8 +5,8 @@ import {
   createRootRouteWithContext,
 } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
-import { QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import type { QueryClient } from '@tanstack/react-query';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -28,20 +28,20 @@ function RootComponent() {
           Home
         </Link>{' '}
         <Link
-          to={'/posts'}
+          to={'/unhoisted'}
           activeProps={{
             className: 'font-bold',
           }}
         >
-          Posts
+          Unhoisted Fetches
         </Link>{' '}
         <Link
-          to="/layout-a"
+          to="/hoisted"
           activeProps={{
             className: 'font-bold',
           }}
         >
-          Layout
+          Hoisted Fetches
         </Link>
       </div>
       <hr />
