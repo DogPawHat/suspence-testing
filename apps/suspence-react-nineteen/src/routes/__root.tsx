@@ -56,6 +56,7 @@ function RootComponent() {
         </Link>
       </div>
       <hr />
+      <h1>Suspense on React 19</h1>
       <PokemonFetchStatus />
       <Outlet />
       <ReactQueryDevtools buttonPosition="top-right" />

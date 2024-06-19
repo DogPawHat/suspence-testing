@@ -1,32 +1,10 @@
 const ExpensiveComponent = () => {
-    const generateLargeDataset = () => {
-      const result = [];
-      for (let i = 0; i < 2250; i++) {
-        const row = [];
-        for (let j = 0; j < 100; j++) {
-          row.push(Math.random());
-        }
-        result.push(row);
-      }
-      return result;
-    };
-  
-    const data = generateLargeDataset();
+    const start = Date.now();
+    while (Date.now() - start < 7000) {}
   
     return (
       <div>
-        <h1>Expensive Component</h1>
-        <table>
-          <tbody>
-            {data.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => (
-                  <td key={cellIndex}>{cell.toFixed(2)}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div>I'm a large component</div>
       </div>
     );
   };
