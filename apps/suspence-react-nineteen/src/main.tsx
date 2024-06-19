@@ -1,18 +1,23 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
-import { routeTree } from './routeTree.gen';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
+import { routeTree } from './routeTree.gen';
+
+import { makeTrackFetchStore } from './store';
+
+// export to main.tsx
 const queryClient = new QueryClient();
+const trackFetchStore = makeTrackFetchStore();
 
 // Set up a Router instance
 const router = createRouter({
   routeTree,
   context: {
     queryClient,
+    trackFetchStore,
   },
-  defaultPreload: 'intent',
+  defaultPreload: false,
   // Since we're using React Query, we don't want loader calls to ever be stale
   // This will ensure that the loader is always called when the route is preloaded or visited
   defaultPreloadStaleTime: 0,

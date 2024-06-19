@@ -11,21 +11,12 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as PostsImport } from './routes/posts'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as IndexImport } from './routes/index'
-import { Route as PostsIndexImport } from './routes/posts.index'
-import { Route as PostsPostIdImport } from './routes/posts.$postId'
-import { Route as LayoutLayoutBImport } from './routes/_layout/layout-b'
-import { Route as LayoutLayoutAImport } from './routes/_layout/layout-a'
-import { Route as PostsPostIdDeepImport } from './routes/posts_.$postId.deep'
+import { Route as UnhoistedIndexImport } from './routes/unhoisted.index'
+import { Route as HoistedIndexImport } from './routes/hoisted.index'
 
 // Create/Update Routes
-
-const PostsRoute = PostsImport.update({
-  path: '/posts',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const LayoutRoute = LayoutImport.update({
   id: '/_layout',
@@ -37,28 +28,13 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const PostsIndexRoute = PostsIndexImport.update({
-  path: '/',
-  getParentRoute: () => PostsRoute,
+const UnhoistedIndexRoute = UnhoistedIndexImport.update({
+  path: '/unhoisted/',
+  getParentRoute: () => rootRoute,
 } as any)
 
-const PostsPostIdRoute = PostsPostIdImport.update({
-  path: '/$postId',
-  getParentRoute: () => PostsRoute,
-} as any)
-
-const LayoutLayoutBRoute = LayoutLayoutBImport.update({
-  path: '/layout-b',
-  getParentRoute: () => LayoutRoute,
-} as any)
-
-const LayoutLayoutARoute = LayoutLayoutAImport.update({
-  path: '/layout-a',
-  getParentRoute: () => LayoutRoute,
-} as any)
-
-const PostsPostIdDeepRoute = PostsPostIdDeepImport.update({
-  path: '/posts/$postId/deep',
+const HoistedIndexRoute = HoistedIndexImport.update({
+  path: '/hoisted/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -80,46 +56,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
-    '/posts': {
-      id: '/posts'
-      path: '/posts'
-      fullPath: '/posts'
-      preLoaderRoute: typeof PostsImport
+    '/hoisted/': {
+      id: '/hoisted/'
+      path: '/hoisted'
+      fullPath: '/hoisted'
+      preLoaderRoute: typeof HoistedIndexImport
       parentRoute: typeof rootRoute
     }
-    '/_layout/layout-a': {
-      id: '/_layout/layout-a'
-      path: '/layout-a'
-      fullPath: '/layout-a'
-      preLoaderRoute: typeof LayoutLayoutAImport
-      parentRoute: typeof LayoutImport
-    }
-    '/_layout/layout-b': {
-      id: '/_layout/layout-b'
-      path: '/layout-b'
-      fullPath: '/layout-b'
-      preLoaderRoute: typeof LayoutLayoutBImport
-      parentRoute: typeof LayoutImport
-    }
-    '/posts/$postId': {
-      id: '/posts/$postId'
-      path: '/$postId'
-      fullPath: '/posts/$postId'
-      preLoaderRoute: typeof PostsPostIdImport
-      parentRoute: typeof PostsImport
-    }
-    '/posts/': {
-      id: '/posts/'
-      path: '/'
-      fullPath: '/posts/'
-      preLoaderRoute: typeof PostsIndexImport
-      parentRoute: typeof PostsImport
-    }
-    '/posts/$postId/deep': {
-      id: '/posts/$postId/deep'
-      path: '/posts/$postId/deep'
-      fullPath: '/posts/$postId/deep'
-      preLoaderRoute: typeof PostsPostIdDeepImport
+    '/unhoisted/': {
+      id: '/unhoisted/'
+      path: '/unhoisted'
+      fullPath: '/unhoisted'
+      preLoaderRoute: typeof UnhoistedIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -129,12 +77,8 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
-  LayoutRoute: LayoutRoute.addChildren({
-    LayoutLayoutARoute,
-    LayoutLayoutBRoute,
-  }),
-  PostsRoute: PostsRoute.addChildren({ PostsPostIdRoute, PostsIndexRoute }),
-  PostsPostIdDeepRoute,
+  HoistedIndexRoute,
+  UnhoistedIndexRoute,
 })
 
 /* prettier-ignore-end */
@@ -147,45 +91,21 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/",
         "/_layout",
-        "/posts",
-        "/posts/$postId/deep"
+        "/hoisted/",
+        "/unhoisted/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
     "/_layout": {
-      "filePath": "_layout.tsx",
-      "children": [
-        "/_layout/layout-a",
-        "/_layout/layout-b"
-      ]
+      "filePath": "_layout.tsx"
     },
-    "/posts": {
-      "filePath": "posts.tsx",
-      "children": [
-        "/posts/$postId",
-        "/posts/"
-      ]
+    "/hoisted/": {
+      "filePath": "hoisted.index.tsx"
     },
-    "/_layout/layout-a": {
-      "filePath": "_layout/layout-a.tsx",
-      "parent": "/_layout"
-    },
-    "/_layout/layout-b": {
-      "filePath": "_layout/layout-b.tsx",
-      "parent": "/_layout"
-    },
-    "/posts/$postId": {
-      "filePath": "posts.$postId.tsx",
-      "parent": "/posts"
-    },
-    "/posts/": {
-      "filePath": "posts.index.tsx",
-      "parent": "/posts"
-    },
-    "/posts/$postId/deep": {
-      "filePath": "posts_.$postId.deep.tsx"
+    "/unhoisted/": {
+      "filePath": "unhoisted.index.tsx"
     }
   }
 }

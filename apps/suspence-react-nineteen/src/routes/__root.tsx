@@ -1,16 +1,24 @@
-import * as React from 'react';
 import {
   Link,
   Outlet,
   createRootRouteWithContext,
 } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
-import { QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { PokemonFetchStatus } from '../components/pokemon-fetch-status';
+import type { QueryClient } from '@tanstack/react-query';
+import type { StoreApi } from 'zustand';
+import type { TrackFetchStore } from '../store';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
+  trackFetchStore: StoreApi<TrackFetchStore>;
 }>()({
+  beforeLoad: async ({ context }) => {
+    const actions = context.trackFetchStore.getState().actions;
+    context.queryClient.clear();
+    actions.clearTrackFetch();
+  },
   component: RootComponent,
 });
 
@@ -28,23 +36,24 @@ function RootComponent() {
           Home
         </Link>{' '}
         <Link
-          to={'/posts'}
+          to={'/unhoisted'}
           activeProps={{
             className: 'font-bold',
           }}
         >
-          Posts
+          Unhoisted Fetches
         </Link>{' '}
         <Link
-          to="/layout-a"
+          to="/hoisted"
           activeProps={{
             className: 'font-bold',
           }}
         >
-          Layout
+          Hoisted Fetches
         </Link>
       </div>
       <hr />
+      <PokemonFetchStatus />
       <Outlet />
       <ReactQueryDevtools buttonPosition="top-right" />
       <TanStackRouterDevtools position="bottom-right" />

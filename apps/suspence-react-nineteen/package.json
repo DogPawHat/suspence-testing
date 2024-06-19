@@ -9,21 +9,29 @@
     "start": "vite"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.17.8",
-    "@tanstack/react-query-devtools": "^5.17.8",
+    "@tanstack/react-query": "^5.45.1",
+    "@tanstack/react-query-devtools": "^5.45.1",
     "@tanstack/react-router": "^1.38.1",
     "@tanstack/router-devtools": "^1.38.1",
-    "@tanstack/router-vite-plugin": "^1.38.0",
-    "redaxios": "^0.5.0",
+    "@tanstack/router-vite-plugin": "^1.39.5",
+    "date-fns": "^3.6.0",
     "immer": "^10.0.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "zod": "^3.22.4"
+    "jotai": "^2.8.3",
+    "jotai-tanstack-query": "^0.8.5",
+    "jotai-zustand": "^0.4.0",
+    "react": "19.0.0-rc-1434af3d22-20240618",
+    "react-dom": "19.0.0-rc-1434af3d22-20240618",
+    "zod": "^3.22.4",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.47",
-    "@types/react-dom": "^18.2.18",
-    "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.0.13"
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc",
+    "@vitejs/plugin-react": "^4.3.1",
+    "pokeapi-js-wrapper": "^1.2.4"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc"
   }
 }

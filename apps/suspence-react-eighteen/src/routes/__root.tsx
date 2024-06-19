@@ -5,7 +5,7 @@ import {
 } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { PokemonFetchStatus } from '../components/pokemon-fetch-status';
+import { PokemonFetchStatus } from '../../../suspence-react-nineteen/src/components/pokemon-fetch-status';
 import type { QueryClient } from '@tanstack/react-query';
 import type { StoreApi } from 'zustand';
 import type { TrackFetchStore } from '../store';
