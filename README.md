@@ -9,3 +9,4 @@ out of order list don't at me
 [ ] - pokemon api
 [ ] - react query devtools in production
 [ ] - zustand powered promise visualizer
+[ ] - proper ass readme
