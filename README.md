@@ -3,4 +3,5 @@
 Run `pnpm install` first.
 
 For React 18 run `pnpm dev:18`
-For React 19 run `pnpm dev:19`.
+
+For React 19 run `pnpm dev:19`
