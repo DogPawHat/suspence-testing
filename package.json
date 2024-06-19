@@ -12,7 +12,9 @@
     "preinstall": "node -e \"if(process.env.CI == 'true') {console.log('Skipping preinstall...'); process.exit(1)}\" || npx -y only-allow pnpm",
     "build": "nx run-many -t build",
     "prettier": "prettier --ignore-unknown '**/*'",
-    "prettier:write": "pnpm run prettier --write"
+    "prettier:write": "pnpm run prettier --write",
+    "dev:18": "nx run suspence-react-eighteen:dev",
+    "dev:19": "nx run suspence-react-nineteen:dev"
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^5.0.5",
