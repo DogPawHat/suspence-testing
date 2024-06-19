@@ -10,66 +10,66 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root';
-import { Route as LayoutImport } from './routes/_layout';
-import { Route as IndexImport } from './routes/index';
-import { Route as UnhoistedIndexImport } from './routes/unhoisted.index';
-import { Route as HoistedIndexImport } from './routes/hoisted.index';
+import { Route as rootRoute } from './routes/__root'
+import { Route as LayoutImport } from './routes/_layout'
+import { Route as IndexImport } from './routes/index'
+import { Route as UnhoistedIndexImport } from './routes/unhoisted.index'
+import { Route as HoistedIndexImport } from './routes/hoisted.index'
 
 // Create/Update Routes
 
 const LayoutRoute = LayoutImport.update({
   id: '/_layout',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const UnhoistedIndexRoute = UnhoistedIndexImport.update({
   path: '/unhoisted/',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const HoistedIndexRoute = HoistedIndexImport.update({
   path: '/hoisted/',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
-      id: '/';
-      path: '/';
-      fullPath: '/';
-      preLoaderRoute: typeof IndexImport;
-      parentRoute: typeof rootRoute;
-    };
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
     '/_layout': {
-      id: '/_layout';
-      path: '';
-      fullPath: '';
-      preLoaderRoute: typeof LayoutImport;
-      parentRoute: typeof rootRoute;
-    };
+      id: '/_layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof LayoutImport
+      parentRoute: typeof rootRoute
+    }
     '/hoisted/': {
-      id: '/hoisted/';
-      path: '/hoisted';
-      fullPath: '/hoisted';
-      preLoaderRoute: typeof HoistedIndexImport;
-      parentRoute: typeof rootRoute;
-    };
+      id: '/hoisted/'
+      path: '/hoisted'
+      fullPath: '/hoisted'
+      preLoaderRoute: typeof HoistedIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/unhoisted/': {
-      id: '/unhoisted/';
-      path: '/unhoisted';
-      fullPath: '/unhoisted';
-      preLoaderRoute: typeof UnhoistedIndexImport;
-      parentRoute: typeof rootRoute;
-    };
+      id: '/unhoisted/'
+      path: '/unhoisted'
+      fullPath: '/unhoisted'
+      preLoaderRoute: typeof UnhoistedIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -79,7 +79,7 @@ export const routeTree = rootRoute.addChildren({
   IndexRoute,
   HoistedIndexRoute,
   UnhoistedIndexRoute,
-});
+})
 
 /* prettier-ignore-end */
 
